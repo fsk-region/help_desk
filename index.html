@@ -3,236 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Иван Иванов - Веб-разработчик</title>
-    <style>
-        /* Общие стили */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-        
-        /* Шапка */
-        header {
-            text-align: center;
-            padding: 40px 0;
-            background: white;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .tagline {
-            color: #7f8c8d;
-            font-size: 1.2em;
-        }
-        
-        /* Основные секции */
-        section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        
-        /* Обо мне */
-        .about {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background: #3498db;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3em;
-            flex-shrink: 0;
-        }
-        
-        /* Навыки */
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .skill-category {
-            background: #ecf0f1;
-            padding: 15px;
-            border-radius: 5px;
-        }
-        
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .skill-category ul {
-            list-style: none;
-        }
-        
-        .skill-category li {
-            padding: 5px 0;
-            border-bottom: 1px dashed #bdc3c7;
-        }
-        
-        .skill-category li:last-child {
-            border-bottom: none;
-        }
-        
-        /* Контакты */
-        .contacts {
-            text-align: center;
-        }
-        
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-        
-        .contact-link {
-            background: #3498db;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        
-        .contact-link:hover {
-            background: #2980b9;
-        }
-        
-        /* Подвал */
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #7f8c8d;
-            margin-top: 20px;
-        }
-        
-        /* Адаптивность */
-        @media (max-width: 600px) {
-            .about {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .contact-link {
-                width: 200px;
-                text-align: center;
-            }
-        }
-    </style>
+    <title>Портал технической поддержки ФСК-Регион</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
 <body>
-    <!-- Шапка с именем и должностью -->
-    <header>
-        <h1>Иван Иванов</h1>
-        <p class="tagline">Веб-разработчик</p>
-        <p>Создаю современные и функциональные сайты</p>
-    </header>
+    <div id="main-page" class="page container">
+        <header class="header">
+            <div class="header-top">
+                <h1>Техническая поддержка</h1>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+            <p class="subtitle">Выберите информационную систему для получения поддержки</p>
+        </header>
 
-    <!-- Секция "Обо мне" -->
-    <section id="about">
-        <h2>Обо мне</h2>
-        <div class="about">
-            <div class="avatar">ИИ</div>
-            <div class="about-text">
-                <p>Привет! Я веб-разработчик с 3-летним опытом создания сайтов и веб-приложений.</p>
-                <p>Специализируюсь на frontend разработке, но также имею опыт работы с backend.</p>
-                <p>Люлю чистый код, простые решения и сложные задачи.</p>
+        <section class="search-section">
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="system-search"
+                    class="form-control search-input"
+                    placeholder="Поиск системы..."
+                    autocomplete="off"
+                >
+                <button id="select-button" class="btn btn--primary">Выбрать</button>
+            </div>
+
+            <div id="search-dropdown" class="search-dropdown hidden">
+                <ul id="search-results"></ul>
+            </div>
+        </section>
+
+        <section class="systems-grid">
+            <div id="systems-container" class="systems-container"></div>
+        </section>
+    </div>
+
+    <div id="support-page" class="page container hidden">
+        <div class="support-content">
+            <button id="back-button" class="btn btn--outline back-button">
+                ← Назад к списку систем
+            </button>
+
+            <div class="support-card">
+                <h2 id="support-title">Техническая поддержка</h2>
+                <p class="support-description">
+                    Для получения технической поддержки воспользуйтесь одним из указанных способов обращения.
+                </p>
+
+                <div id="helpdesk-content" class="hidden">
+                    <h3>Хелпдеск ФСК-Регион</h3>
+                    <p>Для получения технической поддержки по системе <span id="system-name-1"></span> воспользуйтесь внутренним хелпдеском</p>
+
+                    <div class="support-actions">
+                        <a id="helpdesk-link" href="#" target="_blank" class="btn btn--primary btn--lg">
+                            Открыть хелпдеск
+                        </a>
+                        <p class="external-notice">При нажатии откроется внешний ресурс</p>
+                    </div>
+                </div>
+
+                <div id="email-content" class="hidden">
+                    <h3>Техническая поддержка ГК ФСК</h3>
+                    <p>Для получения технической поддержки по системе <span id="system-name-2"></span> обратитесь в техническую поддержку головной компании</p>
+
+                    <div class="email-instructions">
+                        <h3>Как отправить запрос:</h3>
+                        <ol>
+                            <li>Откройте вашу почтовую программу или веб-интерфейс почты</li>
+                            <li>Создайте новое письмо на адрес: <code id="email-link">hd@fsk.ru</code></li>
+                            <li>В теме письма укажите: <strong>"Техподдержка - <span id="system-name-template"></span>"</strong></li>
+                            <li>Опишите детально вашу проблему или вопрос</li>
+                            <li>При необходимости приложите скриншоты или файлы</li>
+                            <li>Отправьте письмо</li>
+                        </ol>
+                    </div>
+
+                    <div class="support-actions">
+                        <button id="compose-email" class="btn btn--primary btn--lg">
+                            Техподдержка
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Секция "Навыки" -->
-    <section id="skills">
-        <h2>Навыки</h2>
-        <div class="skills">
-            <div class="skill-category">
-                <h3>Frontend</h3>
-                <ul>
-                    <li>HTML5/CSS3</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>Адаптивная верстка</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Backend</h3>
-                <ul>
-                    <li>Node.js</li>
-                    <li>PHP</li>
-                    <li>MySQL</li>
-                    <li>MongoDB</li>
-                </ul>
-            </div>
-            <div class="skill-category">
-                <h3>Инструменты</h3>
-                <ul>
-                    <li>Git</li>
-                    <li>Webpack</li>
-                    <li>Figma</li>
-                    <li>Photoshop</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- Секция "Контакты" -->
-    <section id="contacts" class="contacts">
-        <h2>Контакты</h2>
-        <p>Свяжитесь со мной для обсуждения вашего проекта</p>
-        <div class="contact-links">
-            <a href="mailto:ivanov@example.com" class="contact-link">Email</a>
-            <a href="tel:+79991234567" class="contact-link">Телефон</a>
-            <a href="https://t.me/ivanov" class="contact-link">Telegram</a>
-            <a href="https://github.com/ivanov" class="contact-link">GitHub</a>
-        </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer>
-        <p>&copy; 2023 Иван Иванов. Все права защищены.</p>
-    </footer>
+    <script src="app.js"></script>
 </body>
 </html>
